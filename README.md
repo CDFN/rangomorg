@@ -4,6 +4,7 @@ Dependencies:
 Name    |Command
 --------|-------
 jsonrpc | github.com/ybbus/jsonrpc
+
 Usage:
 ```Go
 package main
