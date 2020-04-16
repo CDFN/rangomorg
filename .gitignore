@@ -17,3 +17,6 @@ vendor/
 ### Go Patch ###
 /vendor/
 /Godeps/
+
+# GoLand project files
+.idea/
