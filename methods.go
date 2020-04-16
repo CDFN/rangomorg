@@ -125,3 +125,48 @@ func (r *Rangom) GenerateSignedStrings(n int, length int, characters string, opt
 
 	return out, nil
 }
+func (r *Rangom) GenerateSignedUUIDs(n int, optional map[string]interface{}) (SignedUUIDsResult, error) {
+	out := SignedUUIDsResult{}
+
+	params := map[string]interface{}{
+		"apiKey": r.ApiKey,
+		"n":      n,
+	}
+
+	if optional != nil {
+		for k, v := range optional {
+			params[k] = v
+		}
+	}
+
+	err := r.RPCClient.CallFor(&out, "generateSignedUUIDs", params)
+
+	if err != nil {
+		return out, err
+	}
+
+	return out, nil
+}
+func (r *Rangom) GenerateSignedBlobs(n int, size int, optional map[string]interface{}) (SignedBlobsResult, error) {
+	out := SignedBlobsResult{}
+
+	params := map[string]interface{}{
+		"apiKey": r.ApiKey,
+		"n":      n,
+		"size":   size,
+	}
+
+	if optional != nil {
+		for k, v := range optional {
+			params[k] = v
+		}
+	}
+
+	err := r.RPCClient.CallFor(&out, "generateSignedBlobs", params)
+
+	if err != nil {
+		return out, err
+	}
+
+	return out, nil
+}

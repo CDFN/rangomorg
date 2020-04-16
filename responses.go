@@ -1,5 +1,7 @@
 package rangomorg
 
+import "github.com/google/uuid"
+
 type License struct {
 	LicenseType string `json:"type"`
 	Text        string `json:"text"`
@@ -118,4 +120,43 @@ type SignedStringsRandom struct {
 	UserData       string   `json:"userData"`
 	SerialNumber   int      `json:"serialNumber"`
 	CompletionTime string   `json:"completionTime"`
+}
+
+type SignedUUIDsResult struct {
+	Random        SignedUUIDsRandom `json:"random"`
+	Signature     string            `json:"signature"`
+	BitsUsed      int               `json:"bitsUsed"`
+	BitsLeft      int               `json:"bitsLeft"`
+	RequestsLeft  int               `json:"requestsLeft"`
+	AdvisoryDelay int               `json:"advisoryDelay"`
+}
+type SignedUUIDsRandom struct {
+	Method         string      `json:"method"`
+	HashedApiKey   string      `json:"hashedApiKey"`
+	N              int         `json:"n"`
+	Data           []uuid.UUID `json:"data"`
+	License        License     `json:"license"`
+	UserData       string      `json:"userData"`
+	SerialNumber   int         `json:"serialNumber"`
+	CompletionTime string      `json:"completionTime"`
+}
+
+type SignedBlobsResult struct {
+	Random        SignedBlobsRandom `json:"random"`
+	Signature     string            `json:"signature"`
+	BitsUsed      int               `json:"bitsUsed"`
+	BitsLeft      int               `json:"bitsLeft"`
+	RequestsLeft  int               `json:"requestsLeft"`
+	AdvisoryDelay int               `json:"advisoryDelay"`
+}
+type SignedBlobsRandom struct {
+	Method         string      `json:"method"`
+	HashedApiKey   string      `json:"hashedApiKey"`
+	N              int         `json:"n"`
+	Size           int         `json:"size"`
+	Data           []uuid.UUID `json:"data"`
+	License        License     `json:"license"`
+	UserData       string      `json:"userData"`
+	SerialNumber   int         `json:"serialNumber"`
+	CompletionTime string      `json:"completionTime"`
 }
