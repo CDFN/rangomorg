@@ -1,8 +1,8 @@
-#RangomOrg
+# RangomOrg
 
 RangomOrg is wrapper for random.org API. It's very simple to use!<br>
 Dependencies:
-Name    |Command
+Name    | URL
 --------|-------
 jsonrpc | github.com/ybbus/jsonrpc
 
