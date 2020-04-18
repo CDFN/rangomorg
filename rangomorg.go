@@ -7,12 +7,16 @@ import (
 const ENDPOINT = "https://api.random.org/json-rpc/2/invoke"
 
 type Rangom struct {
-	ApiKey    string
-	RPCClient jsonrpc.RPCClient
+	apiKey    string
+	rpcClient jsonrpc.RPCClient
 }
 
 func New(apiKey string) Rangom {
-	return Rangom{ApiKey: apiKey, RPCClient: jsonrpc.NewClient(ENDPOINT)}
+	return Rangom{apiKey: apiKey, rpcClient: jsonrpc.NewClient(ENDPOINT)}
+}
+
+func (r *Rangom) RPCClient() jsonrpc.RPCClient {
+	return r.rpcClient
 }
 
 func (r *Rangom) GenerateSignedIntegers(n int, min int, max int, optional map[string]interface{}) (SignedIntegersResult, error) {
